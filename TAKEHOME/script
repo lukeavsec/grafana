@@ -9,8 +9,9 @@ export NODE_OPTIONS=--max-old-space-size=7168
 yarn install --immutable
 yarn build
 
+make deps-go
 make gen-go
 make build-cli
 make build-server
 
-./bin/grafana-server
+go run ./pkg/cmd/grafana-server/main.go
