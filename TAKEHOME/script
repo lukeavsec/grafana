@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# This script assumes that go is already installed
+# This script assumes that Node is already installed
+# This script assumes that yarn is already installed
+
+export NODE_OPTIONS=--max-old-space-size=7168
+
+yarn install --immutable
+yarn build
+
+make gen-go
+make build-cli
+make build-server
+
+./bin/grafana-server
